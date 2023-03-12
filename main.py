@@ -2,11 +2,12 @@ from flask import Flask, render_template, request
 import pickle
 import json
 import numpy as np
+import CONFIG
 
-with open(r'artifacts/model.pkl','rb') as file:
+with open(CONFIG.MODEL_PATH,'rb') as file:
     model = pickle.load(file)
 
-with open(r"artifacts/asset.json",'r') as file:
+with open(CONFIG.ASSET_PATH,'r') as file:
     asset = json.load(file)
 col = asset['columns']
 app = Flask(__name__)
@@ -39,4 +40,4 @@ def data():
     return render_template("index.html",PREDICT_VALUE=iris_value)
 
 if __name__ == "__main__":
-    app.run(debug=False,host="0.0.0.0", port= 8000)
+    app.run(host=CONFIG.HOST_NAME, port= CONFIG.PORT_NUMBER)
