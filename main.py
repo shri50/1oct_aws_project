@@ -39,4 +39,4 @@ def data():
     return render_template("index.html",PREDICT_VALUE=iris_value)
 
 if __name__ == "__main__":
-    app.run(debug=True,host="127.0.0.1", port= 5000)
+    app.run(debug=False,host="0.0.0.0", port= 8000)
